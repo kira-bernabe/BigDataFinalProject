@@ -19,6 +19,7 @@ option_list = list(
 
 #print("USAGE: $ run_DESeq_stats.R -I working_directory/ -O save.filename -L level (1,2,3,4)")
 
+# make this a function KB
 
 PCA_plot <- function(input, div) {
   
@@ -130,19 +131,19 @@ PCA_plot <- function(input, div) {
   PCAplot <- plotPCA(transformed_data, intgroup = "condition", returnData = TRUE)
   percentVar <- round(100 * attr(PCAplot, "percentVar"))
   
-  # label each descrete point with actual condition (not just control/experimental)
-  PCAplot$group <- c("B1-C-UV_S142", "B3-C-June_S144",  "B4-C-June_S145", "B3-S4-UV_S140", "B5-S4-June_S146", "B8-S4-June_S147")
+  # label each descrete point with actual condition (not just control/experimental) KB
+  PCAplot$group <- c("B1-C-UV_S142", "B3-C-June_S144",  "B4-C-June_S145", "B3-S4-UV_S140", "B5-S4-June_S146", "B8-S4-June_S147") KB
   
   # saving and finishing up
   #cat ("Saving PCA plot as ", save_filename, " now.\n")
   #pdf(file = paste(save_filename,".pdf",sep = ""), width=18, height=10)
   plot <-ggplot(PCAplot, aes(PC1, PC2, color=condition)) +
     geom_point(size=2) +
-    geom_text(aes(label=group), hjust=0.1, vjust=-0.1) + # this is commented out in original code
-    ggtitle("PCA Plot of control vs. experimental organism data") + #qualify which data it is
+    geom_text(aes(label=group), hjust=0.1, vjust=-0.1) + # this is commented out in original code KB
+    ggtitle("PCA Plot of control vs. experimental organism data") + #qualify which data it is KB
     theme(legend.position = "bottom") +
-    xlab(paste0("PC1: ",percentVar[1],"% variance")) + ylim(-30,30) +
-    ylab(paste0("PC2: ",percentVar[2],"% variance")) + xlim(-30,30) #xlim needs to be adjusted because not all points are falling in the range
+    xlab(paste0("PC1: ",percentVar[1],"% variance")) + ylim(-30,30) # I added this KB +
+    ylab(paste0("PC2: ",percentVar[2],"% variance")) + xlim(-30,30) #xlim needs to be adjusted because not all points are falling in the range KB
   #dev.off()
   
   return(plot)
@@ -150,6 +151,6 @@ PCA_plot <- function(input, div) {
 }
 
 pdf(file = "~/Samsa2MetaFinal/organism/pcaplot.pdf", width=5, height=4)
-PCA_plot("~/Samsa2MetaFinal/organism") #specify folder
+PCA_plot("~/Samsa2MetaFinal/organism") #specify folder KB
 dev.off()
 

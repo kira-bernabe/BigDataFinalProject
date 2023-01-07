@@ -21,6 +21,8 @@ opt = parse_args(opt_parser);
 
 #print("USAGE: $ make_DESeq_heatmap -I working_directory/ -O save.filename -N number of row entries (50)")
 
+#make this a function KB
+
 heatmap_plot <- function(input, div) { 
   
   # check for necessary specs
@@ -133,8 +135,8 @@ heatmap_plot <- function(input, div) {
   rownames(complete_table) <- complete_table$Row.names
   complete_table <- complete_table[,-1]
   completeCondition <- data.frame(condition=factor(c(
-    rep(paste("C", 1:length(control_files), sep=".")), 
-    rep(paste("S4", 1:length(exp_files), sep=".")))))
+    rep(paste("C", 1:length(control_files), sep=".")), # I changed this from control to C KB 
+    rep(paste("S4", 1:length(exp_files), sep="."))))) # I changed this from experiment to S$ KB
   completeCondition1 <- t(completeCondition)
   colnames(complete_table) <- completeCondition1
   completeCondition2 <- data.frame(condition=factor(c(
@@ -155,11 +157,12 @@ heatmap_plot <- function(input, div) {
   matrix <- assay(transformed_data)[ topVarGenes, ]
   matrix <- matrix - rowMeans(matrix)
   
-  #matrix$group <- c("B1-C-UV_S142", "B3-C-June_S144",  "B4-C-June_S145", "B3-S4-UV_S140", "B5-S4-June_S146", "B8-S4-June_S147")
+#this is me trying to make labels it didn't work KB
+  #matrix$group <- c("B1-C-UV_S142", "B3-C-June_S144",  "B4-C-June_S145", "B3-S4-UV_S140", "B5-S4-June_S146", "B8-S4-June_S147") KB
   
-  #matrix$group_num <- as.numeric(unlist(matrix$group))
+  #matrix$group_num <- as.numeric(unlist(matrix$group)) KB
   
-  #matrix$group_num
+  #matrix$group_num KB
   
   # Create heatmap of distances
   colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)
@@ -174,8 +177,8 @@ heatmap_plot <- function(input, div) {
 #pdf(file = save_filename, width=7, height=10)
 #heatmap
 #dev.off()
-pdf(file = "~/Samsa2MetaFinal/organism/heatmap_org.pdf", width=7, height=10) #specify which output
-heatmap_plot("~/Samsa2MetaFinal/organism") #specify folder
+pdf(file = "~/Samsa2MetaFinal/organism/heatmap_org.pdf", width=7, height=10) #specify which output KB
+heatmap_plot("~/Samsa2MetaFinal/organism") #specify folder KB
 dev.off()
 
 

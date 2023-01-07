@@ -23,6 +23,8 @@ opt = parse_args(opt_parser);
 
 #print("USAGE: $ make_combined_graphs.R -D working_directory/ -O save.filename -N org_number -G title")
 
+# set as a function KB
+
 combined_graph <-function(directory, div) { 
   
   # check for necessary specs
@@ -185,20 +187,20 @@ combined_graph <-function(directory, div) {
   if (div == "Relative") {
     plot <-ggplot(full_table_top30, aes(x = variable, y = value, fill = Genus)) +
       geom_bar(position = "fill", stat = "identity") +
-      ggtitle("Relative Data of Function Top Hits") + #add a title
+      ggtitle("Relative Data of Function Top Hits") + #add a title KB
       scale_fill_manual(breaks = Genus2, values = Cb64k) +
-      #scale_y_continuous(labels = percent_format()) + #had to comment this out, kept getting an error
-      theme(legend.position = "bottom", text=element_text(size=8, face="bold"), #default font size is too big
+      #scale_y_continuous(labels = percent_format()) + #had to comment this out, kept getting an error KB
+      theme(legend.position = "bottom", text=element_text(size=8, face="bold"), #default font size is too big KB
             axis.text.x = element_text(angle=45, vjust=0.5)) +
       guides(fill = guide_legend(ncol=5)) +
-      #ggtitle(opt$gtitle) + #comment this out so that title shows up
+      #ggtitle(opt$gtitle) + #comment this out so that title shows up KB
       xlab("Sample ID") + ylab("Relative activity of total sample") #+ xlim(-1.5,5) 
   }
   
   if (div == "Absolute") {
     plot <- ggplot(full_table_top30, aes(x = variable, y = value, fill = Genus)) +
       geom_bar(stat = "identity") + 
-      ggtitle("Absolute Data of Function Top Hits") + #add a title
+      ggtitle("Absolute Data of Function Top Hits") + #add a title KB
       scale_fill_manual(breaks = Genus2, values = Cb64k) +
       theme(legend.position = "bottom", text=element_text(size=8, face="bold"),
             axis.text.x = element_text(angle=45, vjust=0.5)) +

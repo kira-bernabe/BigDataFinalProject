@@ -19,6 +19,8 @@
 
 #print("USAGE: $ diversity_graphs.R -I working_directory/ -O save.filename")
 
+#assign the script as a function to run on either organism files or function files KB
+
 diversity_graphs <-function(input, div) { 
   
   # check for necessary specs
@@ -44,7 +46,7 @@ diversity_graphs <-function(input, div) {
   
   # GET FILE NAMES
   control_files <- list.files(
-    pattern = "controlorg_*", full.names = T, recursive = FALSE) #specify output to #readin
+    pattern = "controlorg_*", full.names = T, recursive = FALSE) #specify output to #read in KB
   control_names = ""
   for (name in control_files) {
     control_names <- c(control_names, unlist(strsplit(name, split='_', fixed=TRUE))[2])}
@@ -121,8 +123,8 @@ diversity_graphs <-function(input, div) {
   graphing_table[,"Shannon"] <- diversity(flipped_complete_table, index = "shannon")
   graphing_table[,"Simpson"] <- diversity(flipped_complete_table, index = "simpson")
   
-  #add individual lables on x axis (call them samples or else it will say labels)
-  graphing_table$samples <- c("B1-C-UV_S142", "B3-C-June_S144",  "B4-C-June_S145", "B3-S4-UV_S140", "B5-S4-June_S146", "B8-S4-June_S147")
+  #add individual lables on x axis (call them samples or else it will say labels) 
+  graphing_table$samples <- c("B1-C-UV_S142", "B3-C-June_S144",  "B4-C-June_S145", "B3-S4-UV_S140", "B5-S4-June_S146", "B8-S4-June_S147") KB
   
   
   if (div == "Shannon") {
@@ -136,7 +138,7 @@ diversity_graphs <-function(input, div) {
     plot <- ggplot(data = graphing_table, aes(x=samples, y=Simpson, 
                                               color = condition, fill = condition)) + 
       geom_bar(stat="identity", width = 0.8) +
-      ggtitle("Simpson diversity of control vs experimental organism samples") + #qualify which data this is
+      ggtitle("Simpson diversity of control vs experimental organism samples") + #qualify which data this is KB
       theme(legend.position = "bottom", text = element_text(face = "bold")) + theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust= 0.5))
   }
   #cat ("\nSuccess!\nSaving diversity graphs as ", save_filename, " now.\n")

@@ -3,7 +3,7 @@
 # Last updated 6/16/2017
 # Run with --help flag for help.
 
-#assign the script as a function to run on either organism files or function files
+#assign the script as a function to run on either organism files or function files KB
 
 
 diversity_stats <- function(input) {
@@ -105,7 +105,7 @@ diversity_stats <- function(input) {
   return(c(divShannon_exp, divShannon_con, divSimpson_exp, divSimpson_con))
 }
 
-list = diversity_stats("~/Samsa2MetaFinal/function/") # just change to appropriate folder
+list = diversity_stats("~/Samsa2MetaFinal/function/") # just change to appropriate folder KB
 exp_shannon = list[1]
 con_shannon = list[2]
 exp_simpson = list[3]
