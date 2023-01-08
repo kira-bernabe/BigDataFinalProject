@@ -1,4 +1,4 @@
-### BIO539 Final Project
+##### BIO539 Final Project
 
 
 This is the final project for BIO539, where we had to use code that we learned throughout class 
