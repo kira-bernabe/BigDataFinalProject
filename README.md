@@ -1,3 +1,6 @@
+##BIO539 Final Project
+
+
 This is the final project for BIO539, where we had to use code that we learned throughout class 
 to analyze and visualize data. The data I am using is for a project from the Gomez-Chiarri Lab with whom I
 collaborate. We are looking at the metatranscriptome of oyster hatcheries before and after they
